@@ -2,88 +2,252 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sobre Gomexicas</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gomexicas - Deliciosas Gomitas Mexicanas</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <div class="logo-nav">
-      <img src="CGomexicas.png" alt="Logo Gomexicas" />
-    </div>
-  </nav>
+    <nav>
+      <div class="logo-nav">
+        <img src="CGomexicas.png" alt="Logo Gomexicas" />
+      </div>
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#carrito">Carrito</a></li>
+          <li><a href="#pedido">Pedido</a></li>
 
-  <header class="header-carrusel">
-    <div class="carrusel">
-      <div class="overlay"></div>
-      <button class="prev" onclick="cambiarImagen(-1)">‹</button>
-      <img id="imagen-carrusel" src="IMG_0396.jpg" alt="Foto Gomexicas">
-      <button class="next" onclick="cambiarImagen(1)">›</button>
-    </div>
-    <div class="mensaje-header">
-      <h1>¿Quiénes Somos?</h1>
-      <p>Un proyecto que nació de un antojo…</p>
-    </div>
-  </header>  
+        </ul>
+      </nav>
+  <header>
+    <h1>Bienvenido a Gomexicas</h1>
+    <img src="IMG_0396.jpg" alt="Gomexicas" />
+    <p>¡Explosión de sabor en cada bocado!</p>
+  </header>
 
-  <section class="seccion-sobre-nosotros">
-    <div class="tarjeta tarjeta-izquierda">
-      <h2>Nuestra Historia</h2>
-      <p>
-        Gomexicas nació en una tarde cualquiera, entre risas y antojos. Como pareja, nos dimos cuenta de algo:
-        <strong>extrañábamos el sabor auténtico de las gomitas mexicanas</strong>. Esa mezcla perfecta de dulce, ácido y picante no era fácil de encontrar en nuestra ciudad.
-      </p>
-      <p>
-        Así que nos preguntamos: <em>¿por qué no hacerlo nosotros mismos?</em> Un experimento casero con chamoy, Tajín y muchas ganas de compartir algo especial fue el punto de partida.
-        Lo que comenzó como un juego se transformó en un pequeño emprendimiento hecho con amor, creatividad y mucho sabor.
-      </p>
-    </div>
-  
-    <div class="tarjeta tarjeta-derecha horizontal">
-      <img src="IMG_0464.jpg" alt="Foto del equipo de Gomexicas" class="imagen-nosotros-lateral" />
-      <div class="texto-nosotros">
-        <h3>¿Quiénes estamos detrás?</h3>
-        <p>
-          Somos dos jóvenes apasionados por el diseño, la comida y las ideas locas que terminan tomando forma.
-          Uno se encarga de las recetas y sabores irresistibles, y el otro de la imagen, la marca y el diseño.
-        </p>
-        <p>
-          Nos mueve la idea de crear algo <strong>hecho a mano, con identidad propia</strong>, con productos accesibles, honestos y llenos de sabor.
-        </p>
+  <section id="sabores">
+    <h2>Tipos de Gomitas y Sabores</h2>
+    <div class="explicacion-gomitas">
+      <div class="tipo">
+        <h3>Gomitas Especiales</h3>
+        <p>Mezcla de:</p>
+        <div class="gomitas-grid">
+          <div>
+            <img src="Ositos.png" alt="Ositos" />
+            <p>Ositos</p>
+          </div>
+          <div>
+            <img src="Gusanitos.png" alt="Sandías" />
+            <p>Gusanitos</p>
+          </div>
+          <div>
+            <img src="Sandias.png" alt="Aros" />
+            <p>Sandias</p>
+          </div>
+          <div>
+            <img src="Sandias acidas.png" alt="Gusanitos" />
+            <p>sandias acidas</p>
+          </div>
+          <div>
+            <img src="Frutillas.png" alt="Sandías" />
+            <p>Frutillas</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tipo">
+        <h3>Gomitas Simples</h3>
+        <p>Tres Sabores:</p>
+        <div class="gomitas-grid">
+          <div>
+            <img src="Ositos.png" alt="Gusanitos" />
+            <p>Ositos</p>
+          </div>
+          <div>
+            <img src="Sandias.png" alt="Ositos" />
+            <p>Sandias</p>
+          </div>
+          <div>
+            <img src="Sandias acidas.png" alt="Sandías" />
+            <p>Sandías acidas</p>
+          </div>
+        </div>
       </div>
     </div>
-    
+  </section>
+  <section id="productos">
+    <h2>Productos</h2>
+    <div id="contenido-productos">
+      <div class="categoria">
+        <h3>Gomitas Enchiladas Picantes</h3>
+        <img src="Picantes.PNG" alt="Gomitas Enchiladas Picantes" class="imagen-categoria" />
+        <div class="subcategoria">
+          <div class="producto">
+            <h5>Especiales</h5>
+            <p>Precio: 12 Bs</p>
+            <button onclick="agregarAlCarrito('Gomitas Picantes Especiales', 12)">Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <h5>Simples</h5>
+            <p>Precio: 10 Bs</p>
+            <button onclick="agregarAlCarrito('Gomitas Picantes Simples', 10)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
   
-    <div class="tarjeta tarjeta-centro">
-      <h3>¿Qué es lo que queremos lograr?</h3>
-      <ul>
-        <li>Ofrecer un producto diferente, divertido y de calidad.</li>
-        <li>Emprender desde lo que amamos y crecer junto a quienes nos apoyan.</li>
-      </ul>
-      <p>
-        Gracias por probar, compartir y creer en lo que hacemos. Esto recién comienza… ¡y viene bien enchilado!
-      </p>
+      <div class="categoria">
+        <h3>Gomitas Enchiladas Sin Picante</h3>
+        <img src="Normales.PNG" alt="Gomitas Enchiladas Picantes" class="imagen-categoria" />
+        <div class="subcategoria">
+          <div class="producto">
+            <h5>Especiales</h5>
+            <p>Precio: 12 Bs</p>
+            <button onclick="agregarAlCarrito('Gomitas Sin Picante Especiales', 12)">Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <h5>Simples</h5>
+            <p>Precio: 10 Bs</p>
+            <button onclick="agregarAlCarrito('Gomitas Sin Picante Simples', 10)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   
-    
-  <div style="text-align: center; margin: 40px;">
-    <a href="index.html" class="boton-tienda">Ir a la Tienda</a>
-  </div>
+  <section id="carrito">
+    <h2>Carrito de Compras</h2>
+    <table id="tabla-carrito" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #ccc; padding: 8px;">Producto</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Precio</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Cantidad</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Eliminar</th>
+        </tr>
+      </thead>
+      
+      <tbody id="productos-carrito"></tbody>
+    </table>
+    <p>Subtotal: <span id="subtotal">0 Bs</span></p>
+    <p>Total: <span id="total">0 Bs</span></p>
+  </section>
 
+  <section id="pedido">
+    <h2>Hacer Pedido</h2>
+    <form onsubmit="enviarPedidoWhatsApp(event)">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required />
+
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" required />
+
+      <label for="whatsapp">Número de WhatsApp:</label>
+      <input type="text" id="whatsapp" required />
+
+      <label for="comentarios">Comentarios:</label>
+      <textarea id="comentarios"></textarea>
+
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+
+
+  </section>
   <script>
-    const imagenes = [
-      "IMG_0396.jpg",
-      "IMG_0671.jpg",
-      "IMG_0672.jpg",
-    ];
-
-    let indice = 0;
-
-    function cambiarImagen(direccion) {
-      indice = (indice + direccion + imagenes.length) % imagenes.length;
-      document.getElementById("imagen-carrusel").src = imagenes[indice];
+    let carrito = [];
+  
+    function agregarAlCarrito(nombre, precio) {
+      const productoExistente = carrito.find((item) => item.nombre === nombre);
+  
+      if (productoExistente) {
+        productoExistente.cantidad += 1;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+  
+      actualizarCarrito();
+    }
+  
+    function actualizarCarrito() {
+      const contenedor = document.getElementById("productos-carrito");
+      contenedor.innerHTML = "";
+  
+      let total = 0;
+  
+      carrito.forEach((producto, index) => {
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+  
+        const fila = document.createElement("tr");
+  
+        fila.innerHTML = `
+          <td style="border: 1px solid #ccc; padding: 8px;">${producto.nombre}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">${producto.precio} Bs</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">
+            <button onclick="cambiarCantidad(${index}, -1)">–</button>
+            ${producto.cantidad}
+            <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          </td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><button onclick="eliminarDelCarrito(${index})">X</button></td>
+        `;
+  
+        contenedor.appendChild(fila);
+      });
+  
+      document.getElementById("subtotal").innerText = total + " Bs";
+      document.getElementById("total").innerText = total + " Bs";
+    }
+  
+    function cambiarCantidad(index, cambio) {
+      carrito[index].cantidad += cambio;
+  
+      if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+      }
+  
+      actualizarCarrito();
+    }
+  
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+  
+    function enviarPedidoWhatsApp(event) {
+      event.preventDefault();
+  
+      const nombre = document.getElementById("nombre").value;
+      const direccion = document.getElementById("direccion").value;
+      const numeroCliente = document.getElementById("whatsapp").value;
+      const comentarios = document.getElementById("comentarios").value;
+  
+      let mensaje = `*Pedido de Gomexicas*%0A`;
+      mensaje += `👤 Nombre: ${nombre}%0A`;
+      mensaje += `🏠 Dirección: ${direccion}%0A`;
+      mensaje += `📱 WhatsApp Cliente: ${numeroCliente}%0A`;
+      mensaje += `🛍 *Productos:*%0A`;
+  
+      let total = 0;
+  
+      carrito.forEach((producto) => {
+        const subtotal = producto.precio * producto.cantidad;
+        mensaje += `• ${producto.nombre} x${producto.cantidad} - ${subtotal} Bs%0A`;
+        total += subtotal;
+      });
+  
+      mensaje += `Total: ${total} Bs%0A`;
+  
+      if (comentarios.trim() !== "") {
+        mensaje += `Comentarios: ${comentarios}%0A`;
+      }
+  
+      const numeroDestino = "59175997997";
+      const url = `https://wa.me/${numeroDestino}?text=${mensaje}`;
+      window.open(url, "_blank");
     }
   </script>
+
+  <div style="text-align:center; margin: 20px;">
+    <a href="Info.html" class="boton-volver">← Volver a la pagina principal</a>
+  </div>  
 </body>
 </html>
