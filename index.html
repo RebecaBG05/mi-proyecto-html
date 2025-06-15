@@ -16,7 +16,7 @@
           <li><a href="#productos">Productos</a></li>
           <li><a href="#carrito">Carrito</a></li>
           <li><a href="#pedido">Pedido</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
+
         </ul>
       </nav>
   <header>
@@ -84,12 +84,12 @@
         <div class="subcategoria">
           <div class="producto">
             <h5>Especiales</h5>
-            <p>Precio: 12bs</p>
+            <p>Precio: 12 Bs</p>
             <button onclick="agregarAlCarrito('Gomitas Picantes Especiales', 12)">Agregar al carrito</button>
           </div>
           <div class="producto">
             <h5>Simples</h5>
-            <p>Precio: 10bs</p>
+            <p>Precio: 10 Bs</p>
             <button onclick="agregarAlCarrito('Gomitas Picantes Simples', 10)">Agregar al carrito</button>
           </div>
         </div>
@@ -101,12 +101,12 @@
         <div class="subcategoria">
           <div class="producto">
             <h5>Especiales</h5>
-            <p>Precio: 12bs</p>
+            <p>Precio: 12 Bs</p>
             <button onclick="agregarAlCarrito('Gomitas Sin Picante Especiales', 12)">Agregar al carrito</button>
           </div>
           <div class="producto">
             <h5>Simples</h5>
-            <p>Precio: 10bs</p>
+            <p>Precio: 10 Bs</p>
             <button onclick="agregarAlCarrito('Gomitas Sin Picante Simples', 10)">Agregar al carrito</button>
           </div>
         </div>
@@ -116,9 +116,20 @@
   
   <section id="carrito">
     <h2>Carrito de Compras</h2>
-    <div id="productos-carrito"></div>
-    <p>Subtotal: <span id="subtotal">0bs</span></p>
-    <p>Total: <span id="total">0bs</span></p>
+    <table id="tabla-carrito" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #ccc; padding: 8px;">Producto</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Precio</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Cantidad</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Eliminar</th>
+        </tr>
+      </thead>
+      
+      <tbody id="productos-carrito"></tbody>
+    </table>
+    <p>Subtotal: <span id="subtotal">0 Bs</span></p>
+    <p>Total: <span id="total">0 Bs</span></p>
   </section>
 
   <section id="pedido">
@@ -141,69 +152,102 @@
 
 
   </section>
-
-<footer id="nosotros">
-      <h2>Nosotros</h2>
-      <p>Un día, entre charla y antojos, con mi pareja nos preguntamos: ¿por qué no traer ese sabor único que amamos, pero que casi nadie ofrece aquí?<br> Así nació Gomexicas: gomitas enchiladas con chamoy, Tajín y ese equilibrio perfecto entre dulce, ácido y picante. Inspirados en los clásicos mexicanos, pero adaptados a nuestro estilo, creamos algo diferente para quienes se atreven a probar lo inesperado.</p>
-</footer>
-
   <script>
     let carrito = [];
-
+  
     function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
+      const productoExistente = carrito.find((item) => item.nombre === nombre);
+  
+      if (productoExistente) {
+        productoExistente.cantidad += 1;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+  
       actualizarCarrito();
     }
-
+  
     function actualizarCarrito() {
       const contenedor = document.getElementById("productos-carrito");
       contenedor.innerHTML = "";
-
+  
       let total = 0;
-
-      carrito.forEach((producto) => {
-        const p = document.createElement("p");
-        p.textContent = `${producto.nombre} - ${producto.precio}bs`;
-        contenedor.appendChild(p);
-        total += producto.precio;
+  
+      carrito.forEach((producto, index) => {
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+  
+        const fila = document.createElement("tr");
+  
+        fila.innerHTML = `
+          <td style="border: 1px solid #ccc; padding: 8px;">${producto.nombre}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">${producto.precio} Bs</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">
+            <button onclick="cambiarCantidad(${index}, -1)">–</button>
+            ${producto.cantidad}
+            <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          </td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><button onclick="eliminarDelCarrito(${index})">X</button></td>
+        `;
+  
+        contenedor.appendChild(fila);
       });
-
-      document.getElementById("subtotal").innerText = total + "bs";
-      document.getElementById("total").innerText = total + "bs";
+  
+      document.getElementById("subtotal").innerText = total + " Bs";
+      document.getElementById("total").innerText = total + " Bs";
     }
-
+  
+    function cambiarCantidad(index, cambio) {
+      carrito[index].cantidad += cambio;
+  
+      if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+      }
+  
+      actualizarCarrito();
+    }
+  
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+  
     function enviarPedidoWhatsApp(event) {
       event.preventDefault();
-
+  
       const nombre = document.getElementById("nombre").value;
       const direccion = document.getElementById("direccion").value;
       const numeroCliente = document.getElementById("whatsapp").value;
       const comentarios = document.getElementById("comentarios").value;
-
+  
       let mensaje = `*Pedido de Gomexicas*%0A`;
       mensaje += `👤 Nombre: ${nombre}%0A`;
       mensaje += `🏠 Dirección: ${direccion}%0A`;
       mensaje += `📱 WhatsApp Cliente: ${numeroCliente}%0A`;
       mensaje += `🛍 *Productos:*%0A`;
-
+  
       let total = 0;
-
+  
       carrito.forEach((producto) => {
-        mensaje += `• ${producto.nombre} - ${producto.precio}bs%0A`;
-        total += producto.precio;
+        const subtotal = producto.precio * producto.cantidad;
+        mensaje += `• ${producto.nombre} x${producto.cantidad} - ${subtotal} Bs%0A`;
+        total += subtotal;
       });
-
-      mensaje += `Total: ${total}bs%0A`;
-
+  
+      mensaje += `Total: ${total} Bs%0A`;
+  
       if (comentarios.trim() !== "") {
         mensaje += `Comentarios: ${comentarios}%0A`;
       }
-
-      const numeroDestino = "59175997997"; 
+  
+      const numeroDestino = "59175997997";
       const url = `https://wa.me/${numeroDestino}?text=${mensaje}`;
       window.open(url, "_blank");
     }
   </script>
-  
+
+  <div style="text-align:center; margin: 20px;">
+    <a href="Info.html" class="boton-volver">← Volver a la pagina principal</a>
+  </div>  
 </body>
 </html>
