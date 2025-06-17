@@ -538,4 +538,12 @@ nav a:hover {
       padding-left: 1.5rem;
     }
   }
+  .icono-ig i {
+    font-size: 30px;
+    color: #E1306C;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+  }
   
